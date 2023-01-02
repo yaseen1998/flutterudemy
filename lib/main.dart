@@ -3,6 +3,7 @@ import 'package:udemy_flutter/LessonFour.dart';
 import 'package:udemy_flutter/LessonOne.dart';
 import 'package:udemy_flutter/LessonThree.dart';
 import 'package:udemy_flutter/LessonTwo.dart';
+import 'package:udemy_flutter/NavigatorLesson.dart';
 import 'package:udemy_flutter/Stack.dart';
 
 void main() {
@@ -29,7 +30,7 @@ class NewMain extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       
-      home:  LessonFour(),
+      home:  NavigatorLesson(),
     );
     
   }
