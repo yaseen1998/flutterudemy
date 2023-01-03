@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:udemy_flutter/DrawerLesson.dart';
 import 'package:udemy_flutter/LessonFour.dart';
 import 'package:udemy_flutter/LessonOne.dart';
 import 'package:udemy_flutter/LessonThree.dart';
 import 'package:udemy_flutter/LessonTwo.dart';
 import 'package:udemy_flutter/NavigatorLesson.dart';
 import 'package:udemy_flutter/Stack.dart';
+import 'package:udemy_flutter/TabBarLesson.dart';
 
 void main() {
-  runApp(const NewMain());
+  runApp( NewMain());
 }
 
 class NewMain extends StatelessWidget {
@@ -16,6 +18,16 @@ class NewMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: 'tabBar',
+      routes: {
+        '': (context) => const LessonOne(),
+        'lessonTwo': (context) => const LessonTwo(),
+        'lessonThree': (context) =>  LessonThree(),
+        'lessonFour': (context) =>  LessonFour(title: 'Lesson Four'),
+        NavigatorLesson.routeName: (context) => const NavigatorLesson(),
+        'Drawer': (context) => const DrawerLesson(),
+        'tabBar': (context) => const TabBarLesson(),
+      },
       theme: ThemeData(
         primarySwatch: Colors.teal,
         colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.black),

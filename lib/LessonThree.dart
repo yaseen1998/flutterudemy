@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:udemy_flutter/Info.dart';
 
 class LessonThree extends StatelessWidget {
-  LessonThree({super.key});
+   LessonThree({super.key});
+
   final name1 = Info(name: 'name', date: DateTime.now());
   List<Info> li = [
     Info(name: 'name', date: DateTime.now()),
