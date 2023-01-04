@@ -5,6 +5,7 @@ import 'package:udemy_flutter/LessonOne.dart';
 import 'package:udemy_flutter/LessonThree.dart';
 import 'package:udemy_flutter/LessonTwo.dart';
 import 'package:udemy_flutter/NavigatorLesson.dart';
+import 'package:udemy_flutter/SliderLesson.dart';
 import 'package:udemy_flutter/Stack.dart';
 import 'package:udemy_flutter/TabBarBottom.dart';
 import 'package:udemy_flutter/TabBarLesson.dart';
@@ -19,7 +20,7 @@ class NewMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: 'tabBarBottom',
+      initialRoute: 'SliderLesson',
       routes: {
         '': (context) => const LessonOne(),
         'lessonTwo': (context) => const LessonTwo(),
@@ -29,6 +30,7 @@ class NewMain extends StatelessWidget {
         'Drawer': (context) => const DrawerLesson(),
         'tabBar': (context) => const TabBarLesson(),
         'tabBarBottom': (context) =>  TabBarBottom(),
+        'SliderLesson': (context) =>  SliderLesson(),
       },
       theme: ThemeData(
         primarySwatch: Colors.teal,
