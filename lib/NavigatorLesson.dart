@@ -10,8 +10,16 @@ class NavigatorLesson extends StatelessWidget {
       body: InkWell(
         child: Text('go to lesson four'),
         onTap: () {
-          Navigator.pushNamed(context, 'lessonFour',
-              arguments: {'title': 'Lesson'});
+          // Navigator.pushNamed(context, 'lessonFour',
+          //     arguments: {'title': 'Lesson'});
+          Navigator.pushReplacementNamed(context, 'LessonFour',
+              arguments: {'title': 'Lesson'}
+              );
+              // difference between push and pushReplacement is that pushReplacement
+              // push : you can go back to the previous page
+              // pushReplacement: you can't go back to the previous page
+              // pushReplacementNamed: you can't go back to the previous page
+              // pushNamed: you can go back to the previous page
         },
       ),
     );
