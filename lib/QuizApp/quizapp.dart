@@ -13,26 +13,43 @@ class _QuizAppState extends State<QuizApp> {
   final List<Map<String, dynamic>> questions = [
     {
       'questionText': 'What\'s your favorite color?',
-      'answers': ['Black', 'Red', 'Green', 'White']
+      'answers': [
+        {'text': 'Black', 'score': 10},
+        {'text': 'Red', 'score': 5},
+        {'text': 'Green', 'score': 3},
+        {'text': 'White', 'score': 1}
+      ]
     },
     {
       'questionText': 'What\'s your favorite animal?',
-      'answers': ['Rabbit', 'Snake', 'Elephant', 'Lion']
+      'answers': [
+        {'text': 'Rabbit', 'score': 3},
+        {'text': 'Snake', 'score': 11},
+        {'text': 'Elephant', 'score': 5},
+        {'text': 'Lion', 'score': 9}]
     },
     {
       'questionText': 'Who\'s your favorite instructor?',
-      'answers': ['Hassan', 'Ramaz', 'Mick', 'Max']
+      'answers': [
+        {'text': 'Mick', 'score': 13},
+        {'text': 'Locas', 'score': 8},
+        {'text': 'Joun', 'score': 6},
+        {'text': 'Max', 'score': 10}]
     },
   ];
   int questionIndex = 0;
-  void answerQuestion() {
+  int totalScore = 0;
+  bool darkMode = false;
+  void answerQuestion(int score) {
     setState(() {
       questionIndex++;
+      totalScore += score;
     });
   }
   void restartQuiz() {
     setState(() {
       questionIndex = 0;
+      totalScore = 0;
     });
   }
 
@@ -41,8 +58,23 @@ class _QuizAppState extends State<QuizApp> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Quiz App'),
+        actions: [
+          Switch(
+            value: darkMode,
+            onChanged: (value)=> {
+              setState(() {
+                darkMode = value;
+              }),
+            },
+            inactiveThumbColor: Colors.red,
+            inactiveTrackColor: Colors.grey,
+            activeColor: Colors.orange,
+            
+          )
+        ],
       ),
       body: Container(
+        color: darkMode ? Colors.black : Colors.white,
         width: double.infinity,
         margin: const EdgeInsets.all(10),
         child: questionIndex < questions.length
@@ -50,7 +82,7 @@ class _QuizAppState extends State<QuizApp> {
                 questions: questions,
                 questionIndex: questionIndex,
                 answerQuestion: answerQuestion)
-            : Result(restartQuiz:restartQuiz)
+            : Result(restartQuiz:restartQuiz, totalScore: totalScore)
       ),
     );
   }

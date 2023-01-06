@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
-import 'package:udemy_flutter/Info.dart';
+import 'package:udemy_flutter/Lesson/Info.dart';
 
 class LessonThree extends StatelessWidget {
    LessonThree({super.key});

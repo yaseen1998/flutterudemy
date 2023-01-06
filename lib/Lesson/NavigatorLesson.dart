@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:udemy_flutter/LessonFour.dart';
 
 class NavigatorLesson extends StatelessWidget {
   const NavigatorLesson({super.key});

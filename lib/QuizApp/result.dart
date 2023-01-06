@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
   final Function restartQuiz;
-  const Result({super.key, required this.restartQuiz});
+  int totalScore;
+   Result({super.key, required this.restartQuiz, required this.totalScore});
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +13,9 @@ class Result extends StatelessWidget {
           child: Text('You did it!',
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
         ),
+        const SizedBox(height: 20),
+        Text('Your score is $totalScore',
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
         TextButton(
           onPressed: () => restartQuiz(),
           child: const Text('Restart Quiz',
