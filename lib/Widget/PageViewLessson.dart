@@ -1,5 +1,8 @@
+import 'package:easy_splash_screen/easy_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:udemy_flutter/QuizApp/quizapp.dart';
 class Data {
   final String title;
   final String description;
@@ -11,6 +14,56 @@ class Data {
       required this.description,
       required this.imageUrl,
       required this.icon});
+}
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool? seen = prefs.getBool('seen');
+print(seen);
+print('seen');
+  runApp( MaterialApp(
+    debugShowCheckedModeBanner: false,
+    title: 'Flutter Demo',
+    routes:{
+      '/a': (context) => QuizApp(),
+      '/b': (context) =>  NewMain(),
+    },
+    home: seen==false || seen==null ? PVL() : NewMain(),
+  ));
+}
+class NewMain extends StatefulWidget {
+  const NewMain({super.key});
+
+  @override
+  State<NewMain> createState() => _NewMainState();
+}
+
+class _NewMainState extends State<NewMain> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(),
+        body: Splash());
+  }
+
+  EasySplashScreen Splash() {
+    return EasySplashScreen(
+        backgroundColor: Colors.white,
+        logoWidth: 200,
+        durationInSeconds: 3,
+        navigator: QuizApp(),
+        loadingText: const Text(
+          'Loading',
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.black,
+          ),
+        ),
+        loaderColor: Colors.black,
+        loadingTextPadding: const EdgeInsets.all(20),
+        logo: Image.asset('assets/images/image3.jpeg'),
+      );
+  }
 }
 
 class PVL extends StatefulWidget {
@@ -117,8 +170,10 @@ class _PVLState extends State<PVL> {
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
               ),
-              onPressed: () {
+              onPressed: () async{
                 Navigator.pushNamed(context, '/b');
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                prefs.setBool('seen', true);
               },
               child: const Text('Get Started',
                   style: TextStyle(

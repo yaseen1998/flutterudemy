@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:easy_splash_screen/easy_splash_screen.dart';
-import 'package:udemy_flutter/PageViewLessson.dart';
-import 'package:udemy_flutter/QuizApp/quizapp.dart';
+import 'package:udemy_flutter/my_color.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 
 void main() {
-  runApp( MaterialApp(
+  runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
     title: 'Flutter Demo',
-    routes:{
-      '/a': (context) => QuizApp(),
-      '/b': (context) =>  NewMain(),
-    },
-    home: PVL(),
+    home: NewMain(),
   ));
 }
 
@@ -26,26 +21,31 @@ class _NewMainState extends State<NewMain> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
-        body: Splash());
-  }
-
-  EasySplashScreen Splash() {
-    return EasySplashScreen(
-        backgroundColor: Colors.white,
-        logoWidth: 200,
-        durationInSeconds: 3,
-        navigator: QuizApp(),
-        loadingText: const Text(
-          'Loading',
-          style: TextStyle(
-            fontSize: 20,
-            color: Colors.black,
-          ),
-        ),
-        loaderColor: Colors.black,
-        loadingTextPadding: const EdgeInsets.all(20),
-        logo: Image.asset('assets/images/image3.jpeg'),
-      );
+      appBar: AppBar(),
+      bottomNavigationBar:  GNav(
+        gap: 4,
+        activeColor: Colors.purple,
+        tabBorder: Border.all(color: Colors.green),
+        tabActiveBorder: Border.all(),
+        duration: const Duration(seconds: 1),
+        tabBorderRadius: 15,
+        tabBackgroundColor: Colors.orange.withOpacity(0.4),
+        iconSize: 12,
+        tabShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.8) ,blurRadius: 8
+          )
+        ],
+        tabs: const[
+          GButton(icon: Icons.home,text: "home",),
+          GButton(icon: Icons.person,text: "person",),
+          GButton(icon: Icons.search,text: "search",),
+        ],
+      ),
+      body: MyColor(
+        color: Colors.red,
+        child: Center(),
+      ),
+    );
   }
 }
